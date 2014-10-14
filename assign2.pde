@@ -8,15 +8,14 @@ float pondY;
 
 float speed;
 
-boolean alive=true;
 int life;
+
 final int GAME_START = 1;
 final int GAME_WIN = 2;
 final int GAME_LOSE = 3;
 final int GAME_RUN = 4;
 final int FROG_DIE = 5;
 int gameState;
-int interval=0;//use millis() to record current time
 
 // Sprites
 PImage imgFrog, imgDeadFrog;
@@ -44,14 +43,15 @@ void setup(){
   
   leftCar1W=leftCar2W=rightCar1W=rightCar2W = 32;//all cars' width 
   leftCar1H=leftCar2H=rightCar1H=rightCar2H = 32;//all cars' height
-  leftCar1X = leftCar2X = 0; //position X of car1,2
-  rightCar1X = rightCar2X =640;//position X of car3,4
+  leftCar1X = leftCar2X = 0; //position X of leftCar1,2
+  rightCar1X = rightCar2X =640-rightCar1H;//position X of rightCar1,2
   
-  leftCar1Y = 128;//position Y of car1
-  rightCar1Y =192;//position Y of car2
-  leftCar2Y  =256;//position Y of car3
-  rightCar2Y =320;//position Y of car4
+  leftCar1Y = 128;//position Y of leftCar1
+  rightCar1Y =192;//position Y of rightCar1
+  leftCar2Y  =256;//position Y of leftCar2
+  rightCar2Y =320;//position Y of rightCar2
   
+  // prepare the images
   imgFrog = loadImage("data/frog.png");
   imgDeadFrog = loadImage("data/deadFrog.png");
   imgLeftCar1 = loadImage("data/LCar1.png");//img of car1
@@ -69,17 +69,15 @@ void draw(){
         text("Press Enter", width/3, height/2);    
         break;
     case FROG_DIE:
-        if(millis()-interval>=500){
-        life--;
+        delay(1000);
         frogX=frogInitX;
         frogY=frogInitY;
-        }
+        gameState = GAME_RUN;
         break;
     case GAME_RUN:
         background(10,110,16);
-        //gameState 
         
-        
+        // draw Pond
         fill(4,13,78);
         rect(0,32,640,32);
 
@@ -91,6 +89,11 @@ void draw(){
         // draw frog
         image(imgFrog, frogX, frogY);
 
+        // -------------------------------
+        // Modify the following code
+        // to meet the requirement
+        // -------------------------------
+        
          //car1 move
          leftCar1X += speed;
          if (leftCar1X > width){
