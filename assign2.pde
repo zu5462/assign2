@@ -70,7 +70,7 @@ void draw(){
     
     case GAME_START:
         background(10,110,16);
-        text("Press Enter to Start", width/5, height/2.5);
+        text("Press Enter to Start", width/3, height/2.5);
         break;
 
     case FROG_DIE:
@@ -186,7 +186,7 @@ void draw(){
         image(imgWinFrog,207,164);
         fill(255);
         text("You Win !!",240,height/4);
-        text("Press Enter to restart", width/6, height/1.2);
+        text("Press Enter to restart", width/4, height/1.2);
         break;
         
     case GAME_LOSE:
@@ -194,7 +194,7 @@ void draw(){
         image(imgLoseFrog,189,160);
         fill(255);
         text("You Lose",240,height/4); 
-        text("Press Enter to continue", width/6, height/1.3);
+        text("Press Enter to continue", width/4, height/1.3);
         break;
       }
 }
