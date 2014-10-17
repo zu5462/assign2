@@ -83,8 +83,6 @@ void draw(){
         
     case GAME_RUN:
         background(10,110,16);
-        fill(255);
-        text("Press Enter to restart", width/3, height/2.5);
 
         // draw Pond
         fill(4,13,78);
